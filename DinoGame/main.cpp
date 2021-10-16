@@ -33,12 +33,12 @@ typedef struct score_st
 
 int cmp(const void* a, const void* b) { return (*(score_st*)b).score - (*(score_st*)a).score; }
 
-double Dino_acceleration = 0, Dino_y = 0;
-int Ms_per_tick = 100, Speed = 3;
-int Tree_x = -1, Tree_left = 0, Tall_tree_x = 143, Tall_tree_left = 137, High_cloud_x = 143, high_cloud_left = 450, Low_cloud_x = 143, Low_cloud_left = 220;
-int Score = 0;
+double Dino_acceleration, Dino_y;
+int Ms_per_tick, Speed;
+int Tree_x, Tree_left, Tall_tree_x, Tall_tree_left, High_cloud_x, high_cloud_left, Low_cloud_x, Low_cloud_left;
+int Score;
 int Score_data_cnt;
-bool Jumping = false, Lying = false;
+bool Jumping, Lying;
 char Ground[CONSOLE_COLS];
 score_st Score_arr[10000];
 
@@ -362,6 +362,7 @@ int start_menu()
 	while (1)
 	{
 		cls;
+		setup();
 		draw_ground();
 		draw_dino(5, CONSOLE_LINES - DINO_SIZE_Y - 1, 0);
 		draw_tree(50);
@@ -417,6 +418,16 @@ int start_menu()
 	}
 }
 
+void setup()
+{
+	load_score();
+	Dino_acceleration = 0, Dino_y = 0;
+	Ms_per_tick = 100, Speed = 3;
+	Tree_x = -1, Tree_left = 0, Tall_tree_x = 143, Tall_tree_left = 137, High_cloud_x = 143, high_cloud_left = 450, Low_cloud_x = 143, Low_cloud_left = 220;
+	Score = 0;
+	Jumping = false, Lying = false;
+}
+
 bool crash()
 {
 	//tree
@@ -430,7 +441,7 @@ bool crash()
 	if (Tall_tree_x > 16 && Tall_tree_x <= 20 && Dino_y <= TALL_TREE_SIZE_Y - 2) return true;
 
 	//high cloud
-	if ((High_cloud_x >= 16 && High_cloud_x <= 24) && Dino_y >= 4) return true;
+	if ((High_cloud_x >= 18 && High_cloud_x <= 22) && Dino_y >= 4) return true;
 
 	//low cloud
 	if ((Low_cloud_x >= 16 && Low_cloud_x <= 24) && !Lying) return true;
@@ -505,7 +516,6 @@ int main()
 {
 	for (int i = 0; i < CONSOLE_COLS - 2; i++) Ground[i] = '-';
 	set_console();
-	load_score();
 	while (true)
 	{
 		if(start_menu() == -1) break;
