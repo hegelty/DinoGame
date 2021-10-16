@@ -1,0 +1,41 @@
+                           InstallFactory Report화일
+
+                                                       작성: 2021-10-16/23:12:46
+
+[일반]
+타이틀: DinoGame
+소스 폴더: D:\programming\DinoGame\exe
+기본 설치 폴더: {ProgramFiles}\UNREVR\DinoGame
+기본 설치 폴더로만 설치 가능: 아니오
+설치화일이 만들어진 폴더: D:\programming\DinoGame
+설치화일의 이름: DinoGame.exe
+설치화일의 언어: 한글
+설치화일의 볼륨 크기: 단일 볼륨
+설치시 화일이 이미 있으면 겹쳐쓸지 물어보기: 예
+설치 완료 후 시스템 재시작 필요함: 아니오
+
+[창]
+위자드 창 비트맵: InstallFactory 기본 위자드 창 비트맵
+제작자: 
+
+[단축 아이콘]
+단축 아이콘1: DinoGame,D:\programming\DinoGame\exe\DinoGame.exe,{DeskTop},,,
+프로그램그룹 이름: DinoGame
+
+[기타 화일]
+기타 화일1: D:\programming\DinoGame\exe\64bit-dll\mfc140ud.dll,{WinSysDir},설치안함,그냥 두기,,,
+기타 화일2: D:\programming\DinoGame\exe\64bit-dll\msvcp140d.dll,{WinSysDir},설치안함,그냥 두기,,,
+기타 화일3: D:\programming\DinoGame\exe\64bit-dll\ucrtbased.dll,{WinSysDir},설치안함,그냥 두기,,,
+기타 화일4: D:\programming\DinoGame\exe\64bit-dll\vcruntime140d.dll,{WinSysDir},설치안함,그냥 두기,,,
+
+[제거]
+제거 타입: 설치시 만든 모든 폴더와 폴더 안의 화일 삭제
+제어판의 '프로그램 추가/제거' 항목에 등록할 이름: DinoGame 제거
+프로그램그룹에 추가할 제거 단축 아이콘의 이름: DinoGame 제거
+
+--------------------------------------------------------------------------------
+총 소스화일의 수  : 10
+총 소스화일의 크기: 24,658,781 바이트
+
+총 설치화일의 수  : 1
+총 설치화일의 크기: 13,563,130 바이트
