@@ -208,6 +208,7 @@ void generate_hurdle()
 	}
 	else if (Tree_left == 0)
 	{
+		if (Tree_x > 143 && (High_cloud_x >= 130 || Low_cloud_x >= 125)) Tree_left = rand() % 23;
 		Tree_x -= Speed;
 		draw_tree(Tree_x);
 	}
@@ -222,6 +223,7 @@ void generate_hurdle()
 	}
 	else if (Tall_tree_left == 0)
 	{
+		if (Tall_tree_x > 143 && (High_cloud_x >= 130 || Low_cloud_x >= 125)) Tall_tree_left = rand() % 41;
 		Tall_tree_x -= Speed;
 		draw_tall_tree(Tall_tree_x);
 	}
