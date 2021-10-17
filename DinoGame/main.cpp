@@ -28,6 +28,7 @@ using namespace std;
 typedef struct score_st
 {
 	int id;
+	char name[100];
 	int score;
 } score_st;
 
@@ -46,22 +47,22 @@ void game();
 
 void load_score()
 {
-	FILE* score_data = fopen("./score.txt", "r");
+	FILE* score_data = fopen("./Score.dino", "r");
 	fscanf(score_data, "%d", &Score_data_cnt);
 	for(int i=0;i<Score_data_cnt;i++)
 	{
-		fscanf(score_data, "%d %d", &Score_arr[i].id, &Score_arr[i].score);
+		fscanf(score_data, "%d %s %d", &Score_arr[i].id, Score_arr[i].name, &Score_arr[i].score);
 	}
 	fclose(score_data);
 }
 
 void save_score()
 {
-	FILE* score_data = fopen("./score.txt", "w");
+	FILE* score_data = fopen("./Score.dino", "w");
 	fprintf(score_data, "%d\n", Score_data_cnt + 1);
 	for(int i=0;i<Score_data_cnt+1;i++)
 	{
-		fprintf(score_data, "%d %d\n", Score_arr[i].id, Score_arr[i].score);
+		fprintf(score_data, "%d %s %d\n", Score_arr[i].id, Score_arr[i].name, Score_arr[i].score);
 	}
 	fclose(score_data);
 }
@@ -127,7 +128,7 @@ void draw_dino(int dino_x, int dino_y, int dino_stat)
 	for (int i = 0; i < DINO_SIZE_Y; i++)
 	{
 		goto_xy(dino_x, dino_y + i);
-		printf("%s\n", dino_img[dino_stat][i]);
+		printf("%s", dino_img[dino_stat][i]);
 	}
 }
 
@@ -144,7 +145,7 @@ void draw_tree(int tree_x)
 	for (int i = 0; i < TREE_SIZE_Y; i++)
 	{
 		goto_xy(tree_x, CONSOLE_LINES - TREE_SIZE_Y - 1 + i);
-		printf("%s\n", tree_img[i]);
+		printf("%s", tree_img[i]);
 	}
 }
 
@@ -164,7 +165,7 @@ void draw_tall_tree(int tree_x)
 	for(int i=0;i<TALL_TREE_SIZE_Y;i++)
 	{
 		goto_xy(tree_x, CONSOLE_LINES - TALL_TREE_SIZE_Y - 1 + i);
-		printf("%s\n", tree_img[i]);
+		printf("%s", tree_img[i]);
 	}
 }
 
@@ -178,7 +179,7 @@ void draw_high_cloud(int cloud_x)
 	for(int i=0;i<CLOUD_SIZE_Y;i++)
 	{
 		goto_xy(cloud_x, CONSOLE_LINES - CLOUD_SIZE_Y - 3 - DINO_SIZE_Y + i);
-		printf("%s\n", cloud_img[i]);
+		printf("%s", cloud_img[i]);
 	}
 }
 
@@ -192,7 +193,7 @@ void draw_low_cloud(int cloud_x)
 	for (int i = 0; i < CLOUD_SIZE_Y; i++)
 	{
 		goto_xy(cloud_x, CONSOLE_LINES - CLOUD_SIZE_Y + 1 - DINO_SIZE_Y + i);
-		printf("%s\n", cloud_img[i]);
+		printf("%s", cloud_img[i]);
 	}
 }
 
@@ -203,7 +204,7 @@ void generate_hurdle()
 	{
 		srand(time(0));
 		Tree_x = CONSOLE_COLS - 7;
-		Tree_left = rand() % 15;
+		Tree_left = rand() % 23;
 	}
 	else if (Tree_left == 0)
 	{
@@ -217,7 +218,7 @@ void generate_hurdle()
 	{
 		srand(time(0));
 		Tall_tree_x = CONSOLE_COLS - 7;
-		Tall_tree_left = rand() % 33;
+		Tall_tree_left = rand() % 41;
 	}
 	else if (Tall_tree_left == 0)
 	{
@@ -231,10 +232,11 @@ void generate_hurdle()
 	{
 		srand(time(0));
 		High_cloud_x = CONSOLE_COLS - 7;
-		high_cloud_left = rand() % 97;
+		high_cloud_left = rand() % 117;
 	}
 	else if (high_cloud_left == 0)
 	{
+		if(High_cloud_x > 143 && (Tree_x>=130||Tall_tree_x>=125)) high_cloud_left = rand() % 117;
 		High_cloud_x -= Speed;
 		draw_high_cloud(High_cloud_x);
 	}
@@ -245,10 +247,11 @@ void generate_hurdle()
 	{
 		srand(time(0));
 		Low_cloud_x = CONSOLE_COLS - 7;
-		Low_cloud_left = rand() % 73;
+		Low_cloud_left = rand() % 83;
 	}
 	else if (Low_cloud_left == 0)
 	{
+		if (Low_cloud_x > 143 && (Tree_x >= 125 || Tall_tree_x >= 135)) Low_cloud_left = rand() % 83;
 		Low_cloud_x -= Speed;
 		draw_low_cloud(Low_cloud_x);
 	}
@@ -287,32 +290,29 @@ void show_scoreboard()
 		"|       10 |              |          |           |          |",
 		"|          ---------------------------------------          |",
 		"|                                                           |",
-		"|                 Press Any Key to Return                   |",
+		"|                 Press ESC Key to Return                   |",
 		"-------------------------------------------------------------"
 	};
 
 	for (int i = 0; i < 24; i++)
 	{
 		goto_xy(43, 3+i);
-		printf("%s\n", scoreboard_image[i]);
+		printf("%s", scoreboard_image[i]);
 	}
 
-	for(int i=0;i<Score_data_cnt+1;i++)
+	for(int i=0;i<Score_data_cnt;i++)
 	{
 		goto_xy(60, 13 + i);
 		printf("%d", Score_arr[i].id);
-		/*
 		goto_xy(72, 13 + i);
-		printf("%s", Score_arr[i].name);
-		*/
+		printf("%s", Score_arr[i].name); 
 		int score_len = (int)(log10(Score_arr[i].score));
 		goto_xy(81 + (11-score_len)/2, 13 + i);
 		printf("%d", Score_arr[i].score);
 	}
 	while (1)
 	{
-		Sleep(50);
-		if(_kbhit()) return;
+		if(GetAsyncKeyState(VK_ESCAPE)) return;
 	}
 }
 
@@ -339,7 +339,7 @@ void game_over(int score)
 	for(int i=0;i<14;i++)
 	{
 		goto_xy(44, 6 + i);
-		printf("%s\n", over_image[i]);
+		printf("%s", over_image[i]);
 	}
 	
 	int score_len = (int)log10(score);
@@ -348,13 +348,25 @@ void game_over(int score)
 
 	string student_id, name;
 	goto_xy(77, 16);
-	scanf("%d", &Score_arr[Score_data_cnt + 1].id);
+	scanf("%d", &Score_arr[Score_data_cnt].id);
+	goto_xy(77, 17);
+	scanf("%s", Score_arr[Score_data_cnt].name);
 
-	Score_arr[Score_data_cnt + 1].score = score;
+	Score_arr[Score_data_cnt].score = score;
 
-	//qsort(Score_arr, Score_data_cnt + 1, sizeof(score_st), cmp);
-	//save_score();
+	qsort(Score_arr, ++Score_data_cnt, sizeof(score_st), cmp);
+	save_score();
 	show_scoreboard();
+}
+
+void setup()
+{
+	load_score();
+	Dino_acceleration = 0, Dino_y = 0;
+	Ms_per_tick = 100, Speed = 3;
+	Tree_x = -1, Tree_left = 0, Tall_tree_x = 143, Tall_tree_left = 137, High_cloud_x = 143, high_cloud_left = 450, Low_cloud_x = 143, Low_cloud_left = 220;
+	Score = 0;
+	Jumping = false, Lying = false;
 }
 
 int start_menu()
@@ -380,7 +392,7 @@ int start_menu()
 			"|                                               # #       |",
 			"|                                               ###       |",
 			"|                  Press SPACE To Start                   |",
-			"|                s : ScoreBoard | x : exit                |",
+			"|               S : ScoreBoard | Q : exit                 |",
 			"|                                                         |",
 			"-----------------------------------------------------------"
 		};
@@ -388,44 +400,31 @@ int start_menu()
 		for (int i = 0; i < 14; i++)
 		{
 			goto_xy(45, 6 + i);
-			printf("%s\n", start_image[i]);
+			printf("%s", start_image[i]);
 		}
 		goto_xy(60, CONSOLE_LINES - 10);
 		printf("SPACE/UP : JUMP & DOWN : SLIDE");
 		while (1)
 		{
-			if (_kbhit() != 0)
+			if (GetAsyncKeyState(VK_SPACE))
 			{
-				int key = _getch();
-				if (key == 32)
-				{
-					game();
-					game_over(Score);
-					Score = 0;
-					break;
-				}
-				else if (key == 's' || key == 'S')
-				{
-					show_scoreboard();
-					break;
-				}
-				else if (key == 'x' || key == 'X')
-				{
-					return -1;
-				}
+				game();
+				game_over(Score);
+				Score = 0;
+				break;
 			}
+			else if (GetAsyncKeyState(0x53))
+			{
+				show_scoreboard();
+				break;
+			}
+			else if (GetAsyncKeyState(0x51))
+			{
+				return -1;
+			}
+			Sleep(50);
 		}
 	}
-}
-
-void setup()
-{
-	load_score();
-	Dino_acceleration = 0, Dino_y = 0;
-	Ms_per_tick = 100, Speed = 3;
-	Tree_x = -1, Tree_left = 0, Tall_tree_x = 143, Tall_tree_left = 137, High_cloud_x = 143, high_cloud_left = 450, Low_cloud_x = 143, Low_cloud_left = 220;
-	Score = 0;
-	Jumping = false, Lying = false;
 }
 
 bool crash()
@@ -485,14 +484,7 @@ void game()
 			else dino_stat = !dino_stat;
 		}
 
-		if (_kbhit() != 0)
-		{
-			key = _getch();
-		}
-
-		if (GetAsyncKeyState(VK_UP)) key = ' ';
-
-		if (key == 32 && Jumping == false)
+		if ((GetAsyncKeyState(VK_UP)||GetAsyncKeyState(VK_SPACE)) && Jumping == false)
 		{
 			Jumping = true;
 			Dino_acceleration = ACCELERATION;
