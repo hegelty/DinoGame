@@ -302,7 +302,7 @@ void show_scoreboard()
 		printf("%s", scoreboard_image[i]);
 	}
 
-	for(int i=0;i<Score_data_cnt;i++)
+	for(int i=0;i<min(Score_data_cnt, 10);i++)
 	{
 		goto_xy(60, 13 + i);
 		printf("%d", Score_arr[i].id);
