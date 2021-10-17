@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_03A10215B6C94A89A397101A3ABCA700"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0C31A7D7D637432DB8B56285E73061B1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,13 +27,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2E50F7AE70854709B4633003D2C127A4"
+        "MsmKey" = "8:_713AA67733DB441298DBC6DFC8E01172"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_72DCD386D19844E7910E4F2FDA904F4E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_91DE376827B6458F8E26F3D239D996BF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -52,6 +52,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A671D27CA3A641588835135FABA3010A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DBAEE70CC27D44D18C219CBF54B4F0A2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -80,6 +86,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -102,7 +116,7 @@
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
-            "Url" = "8:https://github.com/hegelty/DinoGame/releases"
+            "Url" = "8:https://github.com/hegelty/DinoGame/releases/download/Release/DinoGameSetup.msi"
             "ComponentsUrl" = "8:"
                 "Items"
                 {
@@ -179,10 +193,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2E50F7AE70854709B4633003D2C127A4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_713AA67733DB441298DBC6DFC8E01172"
             {
-            "SourcePath" = "8:..\\exe\\score.txt"
-            "TargetName" = "8:score.txt"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x64\\mergemod.dll"
+            "TargetName" = "8:mergemod.dll"
             "Tag" = "8:"
             "Folder" = "8:_56A3DD99B9FB43CA936A3A89AB10079F"
             "Condition" = "8:"
@@ -259,6 +273,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DBAEE70CC27D44D18C219CBF54B4F0A2"
+            {
+            "SourcePath" = "8:..\\DinoGame\\Score.dino"
+            "TargetName" = "8:Score.dino"
+            "Tag" = "8:"
+            "Folder" = "8:_56A3DD99B9FB43CA936A3A89AB10079F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -315,15 +349,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DinoGame"
-        "ProductCode" = "8:{3C5D60BA-6F47-4703-9DCE-5EBD7AA08576}"
-        "PackageCode" = "8:{A446FE53-75EC-489F-8FBA-881021AEA98C}"
+        "ProductCode" = "8:{99FA7CE8-09D5-4787-A57D-317AA2E12ED8}"
+        "PackageCode" = "8:{5DBE3046-EF20-436E-B0D6-0C4EEA4E41EB}"
         "UpgradeCode" = "8:{B7D56077-6FF2-4F58-A489-6B5FAB87C64A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.10"
         "Manufacturer" = "8:UNREVR"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -436,7 +470,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_69C3286109C949CB820640DD1FF32CA7"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9938874B3B81421191A381307F871155"
             {
             "Name" = "8:Dino Game"
             "Arguments" = "8:"
@@ -444,7 +478,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_03A10215B6C94A89A397101A3ABCA700"
+            "Target" = "8:_91DE376827B6458F8E26F3D239D996BF"
             "Folder" = "8:_8006677E330D4825B53C819C66360F02"
             "WorkingFolder" = "8:_56A3DD99B9FB43CA936A3A89AB10079F"
             "Icon" = "8:_0C31A7D7D637432DB8B56285E73061B1"
@@ -849,7 +883,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_03A10215B6C94A89A397101A3ABCA700"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_91DE376827B6458F8E26F3D239D996BF"
             {
             "SourcePath" = "8:..\\Release\\DinoGame.exe"
             "TargetName" = "8:"
@@ -869,7 +903,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|Win32"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{92CC8F24-0164-4574-97A9-DF1450025CD5}"
             "ShowKeyOutput" = "11:TRUE"

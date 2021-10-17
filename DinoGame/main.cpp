@@ -47,7 +47,7 @@ void game();
 
 void load_score()
 {
-	FILE* score_data = fopen("./Score.dino", "r");
+	FILE* score_data = fopen("Score.dino", "r");
 	fscanf(score_data, "%d", &Score_data_cnt);
 	for(int i=0;i<Score_data_cnt;i++)
 	{
@@ -58,7 +58,7 @@ void load_score()
 
 void save_score()
 {
-	FILE* score_data = fopen("./Score.dino", "w");
+	FILE* score_data = fopen("Score.dino", "w");
 	fprintf(score_data, "%d\n", Score_data_cnt + 1);
 	for(int i=0;i<Score_data_cnt+1;i++)
 	{
@@ -73,8 +73,15 @@ void goto_xy(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
+void textcolor(int textcolor, int background)
+{
+	int color = textcolor + background * 16;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
 void set_console()
 {
+	textcolor(10, 0);
 	system(("mode con:cols=" + to_string(CONSOLE_COLS) + " lines=" + to_string(CONSOLE_LINES)).c_str());
 	system("title Dinosour Game by UNREVR");
 }
@@ -395,7 +402,7 @@ int start_menu()
 			"|                                               ###       |",
 			"|                  Press SPACE To Start                   |",
 			"|               S : ScoreBoard | Q : exit                 |",
-			"|                                                         |",
+			"|                                                 v1.0.10 |",
 			"-----------------------------------------------------------"
 		};
 
@@ -456,7 +463,6 @@ void game()
 	Tree_x = CONSOLE_COLS - 5;
 	while (true)
 	{
-		char key = 0;
 		Score += 1;
 
 		if (Score == 200) Speed = 4;
@@ -474,7 +480,7 @@ void game()
 				Dino_y = 0;
 			}
 		}
-		else if (GetAsyncKeyState(VK_DOWN))
+		else if (GetAsyncKeyState(VK_DOWN)||GetAsyncKeyState(0x58))
 		{
 			Lying = true;
 			dino_stat = 2;
@@ -486,7 +492,7 @@ void game()
 			else dino_stat = !dino_stat;
 		}
 
-		if ((GetAsyncKeyState(VK_UP)||GetAsyncKeyState(VK_SPACE)) && Jumping == false)
+		if ((GetAsyncKeyState(VK_UP)||GetAsyncKeyState(VK_SPACE)||GetAsyncKeyState(0x5A)) && Jumping == false)
 		{
 			Jumping = true;
 			Dino_acceleration = ACCELERATION;
@@ -495,10 +501,9 @@ void game()
 		cls;
 
 		generate_hurdle();
-		draw_ground();
-		draw_score(Score);
 		draw_dino(5, CONSOLE_LINES - DINO_SIZE_Y - 1 - (int)ceil(Dino_y), dino_stat);
-
+		draw_score(Score);
+		draw_ground();
 		if (crash()) break;
 
 		Sleep(Ms_per_tick);
