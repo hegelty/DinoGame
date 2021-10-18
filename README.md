@@ -12,3 +12,9 @@ C언어로 만든 공룡게임
 |Memory|4GB RAM|64GB RAM|
 |Storage|15MB|PCIe 3.0 NVMe 2TB|
 |Monitor||CRT Monitor|
+
+##Todo
+---------
+* 스코어보드에 스코어가 2개 추가되는 오류 해결
+* 게임오버 후 스코어보드에서 ESC를 누르면 바로 나가지는 오류 해결
+* 깜빡임 해결
