@@ -9,8 +9,8 @@ C언어로 만든 공룡게임
 |OS|Windows 10/11|Windows 10/11|
 |CPU|x86 or AMD64|AMD Ryzen™ 5950X or 인텔® 코어™ i9-10980XE|
 |GPU|Intel® HD Graphics or AMD Radeon™ Graphic|NVIDIA® RTX3090 or VRAM 12GB|
-|Memory|4GB RAM|64GB RAM|
-|Storage|15MB|PCIe 3.0 NVMe 2TB|
+|Memory|4GB RAM|128GB ECC RAM|
+|Storage|15MB|PCIe 4.0 NVMe 2TB|
 |Monitor||CRT Monitor|
 
 ## Todo
